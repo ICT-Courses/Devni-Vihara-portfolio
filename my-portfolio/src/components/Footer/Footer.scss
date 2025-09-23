@@ -1,97 +1,102 @@
-// import variables.scss and mixins.scss for styling
 @import '../../styles/variables';
-@import '../../styles/mixins';
+@import '../../styles/mixins';  //import variables and mixins for styling
 
-
+// Styles that affect on whole footer component
 .footer {
-    
-  margin-top: auto; 
-  background: var(--card-bg);       
-  padding: $spacing-xl 0;  
-  border-top: 1px solid var(--border-color);            
-                    
+  background: var(--card-bg);
+  margin-top: auto;
+  padding: $spacing-xl 0;
+  border-top: 1px solid var(--border-color);
+  
+  
 
   
-  &__footer_content {
-    @include flex-between; 
-    gap: $spacing-lg;           
-    flex-direction: column;           
-                     
-
+  .footer_content {
+    padding: 0 $spacing-lg;
+    margin: 0 auto; 
+    max-width: 1200px;
     
+  }
+
+  
+  .footer_info {
+    @include flex-between;
+    flex-direction: column;
+    gap: $spacing-lg;
+
     @include desktop {
+      flex-direction: row;
       gap: 0;
-      flex-direction: row;            
-                               
     }
   }
 
-  
-  &__social_links {
-    display: flex;                    
-    gap: $spacing-md;                 
-    align-items: center;              
-  }
-
-  
-  &__footer-link {
-    display: flex;                    
+  //Styling for social media 
+  .social_media {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 40px;                      
-    height: 40px;                     
-    border-radius: $border-radius-full; 
-    background: transparent;          
-    color: var(--text-color);         
-    font-size: $font-size-lg;         
-    transition: all $transition-fast; 
-    border: 2px solid var(--border-color); 
-
+    gap: $spacing-md;
     
+  }
+
+  // Styling for each social media links
+  .footer_links {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    transition: all $transition-fast;
+    border-radius: $border-radius-full;
+    background: transparent;
+    font-size: $font-size-lg;
+    border: 2px solid var(--border-color);
+
     &:hover {
-      background: linear-gradient(135deg, $primary-color, $secondary-color); 
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      border-color: transparent;
       transform: translateY(-2px);
-      border-color: transparent;  
-      color: white;     
-           
+      color: white;
+      
+      
     }
   }
 
-  
+  // Styling for copyright area
   &__copyright {
-    color: var(--text-color); 
-    font-size: $font-size-sm; 
-    text-align: center;               
-            
-            
-
+    color: var(--text-color);
+    font-size: $font-size-sm;
+    text-align: center;
+    
+    
     p {
-      display: flex; 
-      justify-content: center;  
-      gap: $spacing-xs;                
+      display: flex;
+      justify-content: center;
       align-items: center;
-      margin: 0;                      
+      margin: 0;
+      gap: $spacing-xs;
+      
     }
 
-    
     @include desktop {
       text-align: right;
     }
   }
 
-  // Style for heart icon
-  &__heart_icon {
-    animation: heartbeat 1.5s ease-in-out infinite; 
-    color: #e74c3c;  
+  // Apply an animation for heart icon
+  &__footer_heart {
+    animation: heartbeat 1.5s ease-in-out infinite;
+    color: #e74c3c;
+    
   }
 }
 
-// Apply animation for heart icon
+
 @keyframes heartbeat {
   0%, 100% {
-    transform: scale(1);            
+    transform: scale(1);
   }
   50% {
-    transform: scale(1.1);            
+    transform: scale(1.1);
   }
 }
