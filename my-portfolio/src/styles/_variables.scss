@@ -1,0 +1,59 @@
+// Use colours for light theme and dark theme 
+
+// colours in light theme
+$main-blue: #3b82f6;          
+$purple: #8b5cf6;             
+$green-accent: #06d6a0;       
+$text-dark: #1f2937;          
+$text-light: #6b7280;        
+$bg-light: #fff;              
+$card-light: #f9fafb;         
+$border-light: #e5e7eb;       
+
+// colours in dark theme 
+$bg-dark: #111827;            
+$text-dark-mode: #f9fafb;     
+$card-dark: #1f2937;          
+$border-dark: #374151;        
+
+
+// Fonts and fonts sizes used
+$font-body: 'Inter', sans-serif;   // for body content 
+$font-headings: 'Poppins', sans-serif; // for headings
+
+// font sizes (only main ones I use)
+$fs-small: 0.875rem;   // for samll texts
+$fs-normal: 1rem;        // for normal texts
+$fs-large: 1.25rem;    // for large texts
+$fs-huge: 2rem;        // for huge texts like hero heading
+
+$fw-normal: 400;       //normal font weight
+$fw-bold: 700;         //font weight in bold texts
+
+
+// Space sizes 
+$gap-sm: 0.5rem;   // for small space
+$gap-md: 1rem;     // as normal space size
+$gap-lg: 2rem;     // for large space to divide sections
+
+
+// Layout sizes
+$container-width: 1200px;   // width of main content
+$header-h: 4rem;            // hight of the header
+
+
+
+// Breakpoints
+$bp-lg: 1024px;  // breakpoint for desktops and smart phones
+$bp-md: 768px;   //breakpoint for tablets
+
+
+
+// Borders and Shadows
+$shadow: 0 2px 4px rgba(0,0,0,0.1); // box shadow
+$radius-round: 9999px;   // fully rounded corner radius
+$radius: 0.5rem;         // corner radius
+
+
+// Animation
+$transition: 0.3s ease;  // transition time 0.3s
