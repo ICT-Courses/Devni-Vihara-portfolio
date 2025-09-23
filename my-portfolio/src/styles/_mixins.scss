@@ -1,0 +1,66 @@
+// To get responsive design
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 601px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+
+
+//Styles for flex-boxes
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+//Styles for buttons
+@mixin button($bg, $color: #fff) {
+  display: inline-block;
+  background: $bg;
+  transition: 0.2s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: $color;
+  cursor: pointer;
+  border: none;
+  
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+// Styles for cards
+@mixin card {
+  background: var(--card);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+}
+
+// Styles for headings
+@mixin heading($size) {
+  line-height: 1.2;
+  font-weight: 600;
+  font-size: $size;
+}
