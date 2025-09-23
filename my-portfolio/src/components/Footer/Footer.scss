@@ -1,0 +1,97 @@
+// import variables.scss and mixins.scss for styling
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+
+.footer {
+    
+  margin-top: auto; 
+  background: var(--card-bg);       
+  padding: $spacing-xl 0;  
+  border-top: 1px solid var(--border-color);            
+                    
+
+  
+  &__footer_content {
+    @include flex-between; 
+    gap: $spacing-lg;           
+    flex-direction: column;           
+                     
+
+    
+    @include desktop {
+      gap: 0;
+      flex-direction: row;            
+                               
+    }
+  }
+
+  
+  &__social_links {
+    display: flex;                    
+    gap: $spacing-md;                 
+    align-items: center;              
+  }
+
+  
+  &__footer-link {
+    display: flex;                    
+    align-items: center;
+    justify-content: center;
+    width: 40px;                      
+    height: 40px;                     
+    border-radius: $border-radius-full; 
+    background: transparent;          
+    color: var(--text-color);         
+    font-size: $font-size-lg;         
+    transition: all $transition-fast; 
+    border: 2px solid var(--border-color); 
+
+    
+    &:hover {
+      background: linear-gradient(135deg, $primary-color, $secondary-color); 
+      transform: translateY(-2px);
+      border-color: transparent;  
+      color: white;     
+           
+    }
+  }
+
+  
+  &__copyright {
+    color: var(--text-color); 
+    font-size: $font-size-sm; 
+    text-align: center;               
+            
+            
+
+    p {
+      display: flex; 
+      justify-content: center;  
+      gap: $spacing-xs;                
+      align-items: center;
+      margin: 0;                      
+    }
+
+    
+    @include desktop {
+      text-align: right;
+    }
+  }
+
+  // Style for heart icon
+  &__heart_icon {
+    animation: heartbeat 1.5s ease-in-out infinite; 
+    color: #e74c3c;  
+  }
+}
+
+// Apply animation for heart icon
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);            
+  }
+  50% {
+    transform: scale(1.1);            
+  }
+}
