@@ -1,0 +1,115 @@
+// Styles that apply for full website
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// styles for changing themes
+:root {
+  --bg: #ffffff;
+  --text: #1f2937;
+  --card: #f9fafb;
+  --border: #e5e7eb;
+}
+
+// Basic styles
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif; // using system fonts
+  transition: background 0.3s ease, color 0.3s ease;
+  background: var(--bg);
+  line-height: 1.6;
+  color: var(--text);
+  
+}
+
+// Styles for headings
+h1, h2, h3 {
+  font-family: Verdana, Geneva, sans-serif;
+  color: var(--text);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+h1 { font-size: 2rem; }  //font sizes for each headings
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+// Styles for paragrpahs
+p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  
+}
+
+// Styles for links
+a {
+  transition: 0.2s;
+  color: #3b82f6;
+  text-decoration: none;
+  
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Styles for lists
+ul {
+  margin-bottom: 1rem;
+  margin-left: 1.25rem;
+  
+}
+
+//Styles for images 
+img {
+ display: block;
+  max-width: 100%;
+  
+}
+
+// Styles for forms
+input, textarea {
+  background: var(--card);
+  color: var(--text);
+  font-family: inherit;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  padding: 0.5rem;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: #3b82f6;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-radius: 4px;
+
+  &:hover {
+    background: #2563eb;
+  }
+}
+
+// Styles for utilities
+.text-center {
+  text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 90%;
+  
+ 
+}
