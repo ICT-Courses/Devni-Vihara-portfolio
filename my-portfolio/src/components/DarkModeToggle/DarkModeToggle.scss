@@ -1,0 +1,32 @@
+
+
+/* Styles for dark-mode-toggle class */
+.dark-mode-toggle {
+  cursor: pointer; 
+  background: none;   
+  transition: background 0.3s ease;       
+  border-radius: 50%;    
+  padding: 8px;       
+   border: none;
+  
+
+  /* Apply hover effect for toggle button */
+  &:hover {
+    background: rgba(0, 0, 0, 0.1); 
+  }
+
+  /* Apply focus effect for toggle button*/
+  &:focus {
+    outline: 2px solid #3b82f6; 
+    outline-offset: 2px;       
+  }
+
+  /* Styles for icons moon and sun */
+  &__icon {
+    font-size: 1.4rem; 
+    color: var(--text-color, #1f2937); 
+    display: flex;     
+    align-items: center;
+    justify-content: center;
+  }
+}
