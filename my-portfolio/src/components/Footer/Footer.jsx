@@ -11,18 +11,18 @@ const Footer = () => {
             <a 
               href="https://github.com/Devni-Hewasundara" 
               target="_blank" 
-              
+              rel="noopener noreferrer"
               className="footer__social-link"
-              
+              aria-label="GitHub Profile"
             >
               <FiGithub />
             </a>
             <a 
               href="https://linkedin.com/in/DevniVihara" 
               target="_blank" 
-              
+              rel="noopener noreferrer"
               className="footer__social-link"
-              
+              aria-label="LinkedIn Profile"
             >
               <FiLinkedin />
             </a>
