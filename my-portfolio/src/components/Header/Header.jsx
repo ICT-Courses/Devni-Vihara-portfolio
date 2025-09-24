@@ -1,66 +1,110 @@
-
-import { Link, useLocation } from "react-router-dom"; //import link and useLocation from library
-import { useState } from "react"; //import useState from library
-import { FiMenu, FiX } from "react-icons/fi"; //import react icons
-import DarkModeToggle from "../DarkModeToggle/DarkModeToggle"; //import DarkModeToggle.jsx
-import "./Header.scss";  //import Header.scss
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { FiMenu, FiX } from 'react-icons/fi';
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
+import './Header.scss';
 
 const Header = ({ darkMode, toggleDarkMode }) => {
-  // identify whether mobile menu is opened or closed
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  // find current page to underline the page 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  // toggole menu for open and close
-  const handleMenu = () => {
-    setMenuOpen(!menuOpen);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  // after click a link 
   const closeMenu = () => {
-    setMenuOpen(false);
+    setIsMenuOpen(false);
   };
 
-  // check whether link is match with current path
-  const isActive = (path) => location.pathname === path;
+  const isActiveLink = (path) => {
+    return location.pathname === path;
+  };
 
   return (
     <header className="header">
-      <div className="header_content">
-        {/* Logo  of the website*/}
-        <Link to="/" className="logo" onClick={closeMenu}>
-          Portfolio
-        </Link>
+      <div className="container">
+        <div className="header__content">
+          {/* Logo */}
+          <Link to="/" className="header__logo" onClick={closeMenu}>
+            <span className="header__logo-text">Portfolio</span>
+          </Link>
 
-        {/* For navigations in desktops */}
-        <nav className="nav_links">
-          <Link to="/" className={isActive("/") ? "active" : ""}>Home</Link>  {/*Navigate to Home page*/}
-          <Link to="/about" className={isActive("/about") ? "active" : ""}>About</Link> {/*Navigate to About page*/}
-          <Link to="/projects" className={isActive("/projects") ? "active" : ""}>Projects</Link> {/*Navigate to Projects page*/}
-          <Link to="/contact" className={isActive("/contact") ? "active" : ""}>Contact</Link> {/*Navigate to Contact page*/}
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="header__nav">
+            <Link 
+              to="/" 
+              className={`header__nav-link ${isActiveLink('/') ? 'active' : ''}`}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/about" 
+              className={`header__nav-link ${isActiveLink('/about') ? 'active' : ''}`}
+            >
+              About
+            </Link>
+            <Link 
+              to="/projects" 
+              className={`header__nav-link ${isActiveLink('/projects') ? 'active' : ''}`}
+            >
+              Projects
+            </Link>
+            <Link 
+              to="/contact" 
+              className={`header__nav-link ${isActiveLink('/contact') ? 'active' : ''}`}
+            >
+              Contact
+            </Link>
+          </nav>
 
-        {/* Mobile menu button with dark mode */}
-        <div className="header_actions">
-          <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-
-          {/* Create a menu button for menu in mobiles */}
-          <button className="menu_button" onClick={handleMenu}>
-            {menuOpen ? <FiX /> : <FiMenu />}
-          </button>
+          {/* Dark Mode Toggle & Mobile Menu Button */}
+          <div className="header__actions">
+            <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            
+            <button 
+              className="header__menu-toggle"
+              onClick={toggleMenu}
+              aria-label="Toggle mobile menu"
+            >
+              {isMenuOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* For navigations in mobiles */}
-      <nav className={`mobile_nav ${menuOpen ? "open" : ""}`}>
-        <Link to="/" className={isActive("/") ? "active" : ""} onClick={closeMenu}>Home</Link> {/*Navigate to Home page*/}
-        <Link to="/about" className={isActive("/about") ? "active" : ""} onClick={closeMenu}>About</Link> {/*Navigate to About page*/}
-        <Link to="/projects" className={isActive("/projects") ? "active" : ""} onClick={closeMenu}>Projects</Link> {/*Navigate to Projects page*/}
-        <Link to="/contact" className={isActive("/contact") ? "active" : ""} onClick={closeMenu}>Contact</Link> {/*Navigate to Contact page*/}
-      </nav>
+        {/* Mobile Navigation */}
+        <nav className={`header__mobile-nav ${isMenuOpen ? 'open' : ''}`}>
+          <Link 
+            to="/" 
+            className={`header__mobile-link ${isActiveLink('/') ? 'active' : ''}`}
+            onClick={closeMenu}
+          >
+            Home
+          </Link>
+          <Link 
+            to="/about" 
+            className={`header__mobile-link ${isActiveLink('/about') ? 'active' : ''}`}
+            onClick={closeMenu}
+          >
+            About
+          </Link>
+          <Link 
+            to="/projects" 
+            className={`header__mobile-link ${isActiveLink('/projects') ? 'active' : ''}`}
+            onClick={closeMenu}
+          >
+            Projects
+          </Link>
+          <Link 
+            to="/contact" 
+            className={`header__mobile-link ${isActiveLink('/contact') ? 'active' : ''}`}
+            onClick={closeMenu}
+          >
+            Contact
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 };
 
-export default Header; //Export component to use in other components and pages 
+export default Header;

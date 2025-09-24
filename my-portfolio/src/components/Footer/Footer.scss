@@ -1,25 +1,13 @@
 @import '../../styles/variables';
-@import '../../styles/mixins';  //import variables and mixins for styling
+@import '../../styles/mixins';
 
-// Styles that affect on whole footer component
 .footer {
   background: var(--card-bg);
-  margin-top: auto;
-  padding: $spacing-xl 0;
   border-top: 1px solid var(--border-color);
-  
-  
+  padding: $spacing-xl 0;
+  margin-top: auto;
 
-  
-  .footer_content {
-    padding: 0 $spacing-lg;
-    margin: 0 auto; 
-    max-width: 1200px;
-    
-  }
-
-  
-  .footer_info {
+  &__content {
     @include flex-between;
     flex-direction: column;
     gap: $spacing-lg;
@@ -30,52 +18,44 @@
     }
   }
 
-  //Styling for social media 
-  .social_media {
+  &__social {
     display: flex;
-    align-items: center;
     gap: $spacing-md;
-    
+    align-items: center;
   }
 
-  // Styling for each social media links
-  .footer_links {
+  &__social-link {
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 40px;
     height: 40px;
-    justify-content: center;
-    align-items: center;
-    color: var(--text-color);
-    transition: all $transition-fast;
     border-radius: $border-radius-full;
     background: transparent;
+    color: var(--text-color);
     font-size: $font-size-lg;
+    transition: all $transition-fast;
     border: 2px solid var(--border-color);
 
     &:hover {
       background: linear-gradient(135deg, $primary-color, $secondary-color);
+      color: white;
       border-color: transparent;
       transform: translateY(-2px);
-      color: white;
-      
-      
     }
   }
 
-  // Styling for copyright area
   &__copyright {
+    text-align: center;
     color: var(--text-color);
     font-size: $font-size-sm;
-    text-align: center;
-    
     
     p {
       display: flex;
-      justify-content: center;
       align-items: center;
-      margin: 0;
+      justify-content: center;
       gap: $spacing-xs;
-      
+      margin: 0;
     }
 
     @include desktop {
@@ -83,14 +63,11 @@
     }
   }
 
-  // Apply an animation for heart icon
-  &__footer_heart {
-    animation: heartbeat 1.5s ease-in-out infinite;
+  &__heart {
     color: #e74c3c;
-    
+    animation: heartbeat 1.5s ease-in-out infinite;
   }
 }
-
 
 @keyframes heartbeat {
   0%, 100% {
