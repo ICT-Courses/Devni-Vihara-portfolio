@@ -1,74 +1,71 @@
-
-import { useState } from 'react'; //import useState hook
-
-import { motion } from 'framer-motion'; //import motion from framer-motion
-
-import { FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi'; //import icons from react-icons
-
-import './Contact.scss'; //import Contact.scss for styling
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import './Contact.scss';
 
 const Contact = () => {
-  // store input values
   const [formData, setFormData] = useState({
-    name: '',     // name of the company or person
-    email: '',    // email address of the company or person
-    subject: '',  // subject of the message 
-    message: ''   // content of the message
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
   });
-
-  // check whether the form is submitted
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // store success/error message
   const [submitStatus, setSubmitStatus] = useState('');
 
-  // control input changes in the form 
   const handleInputChange = (e) => {
-    const { name, value } = e.target; // filed name and value
+    const { name, value } = e.target;
     setFormData(prev => ({
-      ...prev,       
-      [name]: value  //update the value
+      ...prev,
+      [name]: value
     }));
   };
 
-  // Validate fileds in the form
   const validateForm = () => {
-    // validate emails
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-    if (!formData.name.trim()) return 'Name is required';
-    if (!formData.email.trim()) return 'Email is required';
-    if (!emailRegex.test(formData.email)) return 'Please enter a valid email address';
-    if (!formData.subject.trim()) return 'Subject is required';
-    if (!formData.message.trim()) return 'Message is required';
-    if (formData.message.length < 10) return 'Message must be at least 10 characters long';
+    if (!formData.name.trim()) {
+      return 'Name is required';
+    }
+    if (!formData.email.trim()) {
+      return 'Email is required';
+    }
+    if (!emailRegex.test(formData.email)) {
+      return 'Please enter a valid email address';
+    }
+    if (!formData.subject.trim()) {
+      return 'Subject is required';
+    }
+    if (!formData.message.trim()) {
+      return 'Message is required';
+    }
+    if (formData.message.length < 10) {
+      return 'Message must be at least 10 characters long';
+    }
     
-    return null; 
+    return null;
   };
 
-  //handle the submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // prevent reload the page
+    e.preventDefault();
     
-    const validationError = validateForm(); // check validation
+    const validationError = validateForm();
     if (validationError) {
       setSubmitStatus(`Error: ${validationError}`);
       return;
     }
 
-    setIsSubmitting(true);  
-    setSubmitStatus('');    
+    setIsSubmitting(true);
+    setSubmitStatus('');
 
+    // Simulate form submission (replace with actual form handling)
     try {
-      
       await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // 
+      
+      // Here you would typically send the data to your backend
       console.log('Form data:', formData);
-
-      // message of successful submission
+      
       setSubmitStatus('Message sent successfully! I\'ll get back to you soon.');
-
-      // after submission reset fields
       setFormData({
         name: '',
         email: '',
@@ -76,72 +73,77 @@ const Contact = () => {
         message: ''
       });
     } catch (error) {
-      // if submission fails display an error message
       setSubmitStatus('Error: Something went wrong. Please try again.');
     } finally {
-      
       setIsSubmitting(false);
     }
   };
 
-  // Contact information
   const contactInfo = [
     {
-      icon: <FiMail />,                  
+      icon: <FiMail />,
       label: 'Email',
-      value: 'devnivihara52@gmail.com',  
-      href: 'mailto:devnivihara52@gmail.com' 
+      value: 'your.email@example.com',
+      href: 'mailto:your.email@example.com'
     },
     {
-      icon: <FiPhone />,                 
+      icon: <FiPhone />,
       label: 'Phone',
-      value: '+94 779 472 526',          
-      href: 'tel:+94779472526'           
+      value: '+94 123 456 789',
+      href: 'tel:+94123456789'
     },
     {
-      icon: <FiMapPin />,                
+      icon: <FiMapPin />,
       label: 'Location',
-      value: 'Gangodawila,Nugegoda',       
-      href: 'Gangodawila,Nugegoda'                         
+      value: 'Negombo, Sri Lanka',
+      href: null
     }
   ];
 
-  // Navigate to my social media accounts
   const socialLinks = [
     {
       icon: <FiGithub />,
       name: 'GitHub',
-      url: 'https://github.com/Devni-Hewasundara',
+      url: 'https://github.com/yourusername',
       color: '#333'
     },
     {
       icon: <FiLinkedin />,
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/DevniVihara',
+      url: 'https://linkedin.com/in/yourusername',
       color: '#0077b5'
+    },
+    {
+      icon: <FiTwitter />,
+      name: 'Twitter',
+      url: 'https://twitter.com/yourusername',
+      color: '#1da1f2'
     }
-    
   ];
 
-  // Apply animations
   const containerVariants = {
-    hidden: { opacity: 0 }, 
+    hidden: { opacity: 0 },
     visible: {
-      opacity: 1,           
-      transition: { staggerChildren: 0.2 } 
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
     }
   };
 
-  // Animations for each item
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },      
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } 
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
+    }
   };
 
   return (
     <div className="contact">
       <div className="container">
-        {/* Main section of the page */}
+        {/* Hero Section */}
         <motion.section 
           className="contact__hero"
           initial="hidden"
@@ -155,7 +157,7 @@ const Contact = () => {
         </motion.section>
 
         <div className="contact__content">
-          {/* contact form section */}
+          {/* Contact Form */}
           <motion.section 
             className="contact__form-section"
             initial="hidden"
@@ -164,12 +166,8 @@ const Contact = () => {
           >
             <motion.div className="contact__form-container" variants={itemVariants}>
               <h2>Send me a message</h2>
-              
               <form className="contact__form" onSubmit={handleSubmit}>
-                
-            
                 <div className="form-row">
-                  {/*Enter your name*/}
                   <div className="form-group">
                     <label htmlFor="name">Full Name *</label>
                     <input
@@ -182,7 +180,6 @@ const Contact = () => {
                       required
                     />
                   </div>
-            {/*Enter email address*/}
                   <div className="form-group">
                     <label htmlFor="email">Email Address *</label>
                     <input
@@ -197,7 +194,6 @@ const Contact = () => {
                   </div>
                 </div>
                 
-        {/*Enter subject of the message*/}
                 <div className="form-group">
                   <label htmlFor="subject">Subject *</label>
                   <input
@@ -211,7 +207,6 @@ const Contact = () => {
                   />
                 </div>
                 
-        {/*Enter the contact message*/}
                 <div className="form-group">
                   <label htmlFor="message">Message *</label>
                   <textarea
@@ -226,7 +221,6 @@ const Contact = () => {
                   ></textarea>
                 </div>
                 
-        {/*form submission button*/}
                 <button 
                   type="submit" 
                   className="btn-primary contact__submit-btn"
@@ -245,7 +239,6 @@ const Contact = () => {
                   )}
                 </button>
                 
-        {/*display form status message*/}
                 {submitStatus && (
                   <div className={`form-status ${submitStatus.startsWith('Error') ? 'error' : 'success'}`}>
                     {submitStatus}
@@ -255,7 +248,7 @@ const Contact = () => {
             </motion.div>
           </motion.section>
 
-    {/*contact info section*/}
+          {/* Contact Info */}
           <motion.section 
             className="contact__info-section"
             initial="hidden"
@@ -263,10 +256,12 @@ const Contact = () => {
             variants={containerVariants}
           >
             <motion.div className="contact__info" variants={itemVariants}>
-              <h2>Let's connect with me</h2>
+              <h2>Let's connect</h2>
+              <p>
+                I'm always interested in hearing about new opportunities and projects. 
+                Whether you have a question or just want to say hi, feel free to reach out!
+              </p>
               
-              
-            {/*list of contact information*/}
               <div className="contact__info-list">
                 {contactInfo.map((info, index) => (
                   <motion.div 
@@ -274,11 +269,9 @@ const Contact = () => {
                     className="contact__info-item"
                     variants={itemVariants}
                   >
-                    
                     <div className="contact__info-icon">
                       {info.icon}
                     </div>
-                    
                     <div className="contact__info-content">
                       <h3>{info.label}</h3>
                       {info.href ? (
@@ -291,7 +284,6 @@ const Contact = () => {
                 ))}
               </div>
 
-        {/*social media links*/}
               <div className="contact__social">
                 <h3>Follow me</h3>
                 <div className="contact__social-links">
@@ -300,7 +292,7 @@ const Contact = () => {
                       key={index}
                       href={social.url}
                       target="_blank"
-                      
+                      rel="noopener noreferrer"
                       className="contact__social-link"
                       style={{ '--social-color': social.color }}
                       whileHover={{ scale: 1.1 }}
@@ -320,5 +312,4 @@ const Contact = () => {
   );
 };
 
-
-export default Contact; //export component to use in other pages and components
+export default Contact;
