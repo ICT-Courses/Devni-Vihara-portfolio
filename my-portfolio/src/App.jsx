@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className={`app ${darkMode ? 'dark-mode' : ''}`}>
-      <Router basename="">
+      <Router basename="my-portfolio">
         <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <main className="main-content">
           <Routes>
