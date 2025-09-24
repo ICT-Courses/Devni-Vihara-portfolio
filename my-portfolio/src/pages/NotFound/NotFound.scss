@@ -1,0 +1,202 @@
+
+@import '../../styles/variables';
+@import '../../styles/mixins';  //import variables and mixins 
+
+// Styles for main content in the page
+.not-found {
+  min-height: 100vh; 
+  @include flex-center; 
+  padding: $spacing-2xl 0; 
+
+  // Styles for buttons and texts
+  &__content {
+    text-align: center;
+    max-width: 600px; 
+  }
+
+  // style for error 404
+  &__illustration {
+    position: relative;
+    margin-bottom: $spacing-2xl;
+    display: inline-block;
+  }
+
+  // animation for error 404
+  &__number {
+    font-size: clamp(6rem, 15vw, 12rem); 
+    font-weight: $font-weight-bold;
+    font-family: $font-family-heading;
+    background: linear-gradient(135deg, $primary-color, $secondary-color, $accent-color); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    position: relative;
+    z-index: 2;
+    animation: float 3s ease-in-out infinite; 
+  }
+
+  //  styles for Glitch effect
+  &__glitch {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, $secondary-color, $primary-color);
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 55%); 
+    animation: glitch 2s infinite; 
+    opacity: 0.7;
+  }
+
+  // styles for title of the page
+  h1 {
+    @include heading-1;
+    margin-bottom: $spacing-lg;
+    font-size: clamp($font-size-2xl, 5vw, $font-size-4xl);
+  }
+
+  // styles for description of the page
+  &__description {
+    @include body-text;
+    font-size: $font-size-lg;
+    line-height: 1.7;
+    margin-bottom: $spacing-2xl;
+    color: var(--text-color);
+    opacity: 0.8;
+  }
+
+  // styles for action buttons
+  &__actions {
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: $spacing-2xl;
+
+    .btn-primary,
+    .btn-secondary {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      padding: $spacing-md $spacing-xl;
+      font-size: $font-size-base;
+      min-width: 150px;
+      justify-content: center;
+    }
+  }
+
+  // styles for extra links
+  &__suggestions {
+    @include card;
+    padding: $spacing-xl;
+    background: rgba(var(--card-bg), 0.5); 
+    backdrop-filter: blur(10px);
+
+    h3 {
+      @include heading-3;
+      margin-bottom: $spacing-lg;
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+// styles for links
+.suggestions-links {
+  display: flex;
+  gap: $spacing-lg;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+    padding: $spacing-sm $spacing-lg;
+    border: 2px solid rgba($primary-color, 0.2);
+    border-radius: $border-radius-full;
+    transition: all $transition-fast;
+    background: rgba($primary-color, 0.05);
+
+    // styles for hover effect
+    &:hover {
+      background: rgba($primary-color, 0.1);
+      border-color: $primary-color;
+      color: $primary-color;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// Floating animation for error 404
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+// Glitch animation 
+@keyframes glitch {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+  20% {
+    transform: translateX(-2px);
+    opacity: 0.5;
+  }
+  40% {
+    transform: translateX(2px);
+    opacity: 0.8;
+  }
+  60% {
+    transform: translateX(-1px);
+    opacity: 0.6;
+  }
+  80% {
+    transform: translateX(1px);
+    opacity: 0.9;
+  }
+}
+
+// styles in mobiles
+@include mobile {
+  .not-found {
+    padding: $spacing-xl 0;
+    min-height: calc(100vh - #{$header-height}); 
+
+    &__illustration {
+      margin-bottom: $spacing-xl;
+    }
+
+    &__number {
+      font-size: clamp(4rem, 20vw, 8rem); 
+    }
+
+    &__actions {
+      flex-direction: column;
+      align-items: center;
+      gap: $spacing-md;
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+
+    &__suggestions {
+      padding: $spacing-lg;
+    }
+  }
+
+  // links display as a stack in mobiles
+  .suggestions-links {
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    a {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
