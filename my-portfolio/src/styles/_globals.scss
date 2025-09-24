@@ -1,115 +1,189 @@
-// Styles that apply for full website
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
-
-* {
+// CSS Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-// styles for changing themes
+// CSS Variables for theme switching
 :root {
-  --bg: #ffffff;
-  --text: #1f2937;
-  --card: #f9fafb;
-  --border: #e5e7eb;
+  --bg-color: #{$bg-color};
+  --text-color: #{$text-primary};
+  --card-bg: #{$card-bg};
+  --border-color: #{$border-color};
 }
 
-// Basic styles
+// Base styles
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
-  
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif; // using system fonts
-  transition: background 0.3s ease, color 0.3s ease;
-  background: var(--bg);
+  font-family: $font-family-primary;
+  font-weight: $font-weight-normal;
   line-height: 1.6;
-  color: var(--text);
-  
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: all $transition-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-// Styles for headings
-h1, h2, h3 {
-  font-family: Verdana, Geneva, sans-serif;
-  color: var(--text);
-  margin-bottom: 1rem;
-  font-weight: 600;
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-semibold;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+  color: var(--text-color);
 }
 
-h1 { font-size: 2rem; }  //font sizes for each headings
-h2 { font-size: 1.5rem; }
-h3 { font-size: 1.25rem; }
+h1 {
+  @include heading-1;
+}
 
-// Styles for paragrpahs
+h2 {
+  @include heading-2;
+}
+
+h3 {
+  @include heading-3;
+}
+
 p {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  
+  @include body-text;
+  margin-bottom: $spacing-md;
 }
 
-// Styles for links
 a {
-  transition: 0.2s;
-  color: #3b82f6;
+  color: $primary-color;
   text-decoration: none;
+  transition: color $transition-fast;
   
-
   &:hover {
-    text-decoration: underline;
+    color: $secondary-color;
   }
 }
 
-// Styles for lists
-ul {
-  margin-bottom: 1rem;
-  margin-left: 1.25rem;
-  
+// Lists
+ul, ol {
+  padding-left: $spacing-lg;
+  margin-bottom: $spacing-md;
 }
 
-//Styles for images 
+li {
+  margin-bottom: $spacing-xs;
+}
+
+// Images
 img {
- display: block;
   max-width: 100%;
-  
+  height: auto;
+  display: block;
 }
 
-// Styles for forms
-input, textarea {
-  background: var(--card);
-  color: var(--text);
+// Form elements
+input,
+textarea,
+select {
   font-family: inherit;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  padding: 0.5rem;
+  font-size: $font-size-base;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-md;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: all $transition-fast;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+  }
 }
 
 button {
   font-family: inherit;
-  border: none;
-  background: #3b82f6;
-  padding: 0.5rem 1rem;
-  color: #fff;
   cursor: pointer;
-  transition: background 0.2s ease;
-  border-radius: 4px;
-
-  &:hover {
-    background: #2563eb;
-  }
 }
 
-// Styles for utilities
+// Utility classes
+.container {
+  @include container;
+}
+
 .text-center {
   text-align: center;
 }
 
-.container {
-    margin: 0 auto;
-    max-width: 1200px;
-    width: 90%;
-  
- 
+.text-gradient {
+  background: linear-gradient(135deg, $primary-color, $secondary-color, $accent-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.btn-primary {
+  @include button-primary;
+}
+
+.btn-secondary {
+  @include button-secondary;
+}
+
+// Loading animation
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  border-top: 2px solid $primary-color;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  border-radius: $border-radius-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, $secondary-color, $primary-color);
+}
+
+// Selection
+::selection {
+  background: rgba($primary-color, 0.2);
+  color: var(--text-color);
 }
