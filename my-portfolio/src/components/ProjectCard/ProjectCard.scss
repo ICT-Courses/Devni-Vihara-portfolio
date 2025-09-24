@@ -1,0 +1,181 @@
+
+@import '../../styles/variables';
+@import '../../styles/mixins';  //import variables and mixins for styling
+
+
+//styles for project card
+.project-card {
+  
+  @include card;
+   display: flex;
+   overflow: hidden;
+   height: 100%;
+   position: relative;
+   flex-direction: column;
+  
+  
+
+  // hover style for project card 
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-10px);
+    
+
+    // zoom the image 
+    .project-card__image img {
+      transform: scale(1.05);
+    }
+  }
+
+  // Apply styles for images
+  &__image {
+    height: 200px;
+    position: relative;
+    border-radius: $border-radius-md;
+    margin-bottom: $spacing-lg;
+    overflow: hidden;
+   
+    
+
+    img {
+      transition: transform $transition-slow;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Apply styles for badge
+  &__badge {
+    position: absolute;
+    background: linear-gradient(135deg, $accent-color, #20e3b2);
+    top: $spacing-sm;
+    right: $spacing-sm;
+    padding: $spacing-xs $spacing-sm;
+    color: white;
+    font-size: $font-size-xs;
+    border-radius: $border-radius-full;
+     text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    z-index: 2;
+    letter-spacing: 0.5px;
+    
+  }
+
+  //Styles for content
+  &__content {
+    display: flex;
+    flex: 1; 
+    flex-direction: column;
+  }
+
+  // styles for project title
+  &__title {
+    @include heading-3;
+    color: var(--text-color);
+    margin-bottom: $spacing-sm;
+    
+  }
+
+  // styles for project description
+  &__desc {
+    @include body-text;
+    flex: 1;
+    margin-bottom: $spacing-lg;
+    line-height: 1.6;
+  }
+
+  // Apply styles for lists
+  &__tech-list {
+    flex-wrap: wrap;
+    display: flex;
+    margin-bottom: $spacing-lg;
+    gap: $spacing-xs;
+    
+  }
+
+  // Apply styles for class named tech
+  &__tech {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    border-radius: $border-radius-full;
+    border: 1px solid rgba($primary-color, 0.2);
+    background: rgba($primary-color, 0.1);
+    color: $primary-color;
+     transition: all $transition-fast;
+    
+   
+   
+
+    &:hover {
+      transform: scale(1.05);
+      background: rgba($primary-color, 0.2);
+     
+    }
+  }
+
+  // Apply styles for links
+  &__links {
+    display: flex;
+    margin-top: auto;
+    gap: $spacing-md;
+     
+  }
+
+  &__link {
+    display: flex;
+    border: 2px solid var(--border-color);
+    padding: $spacing-sm $spacing-md;
+    align-items: center;
+    font-weight: $font-weight-medium;
+    transition: all $transition-fast;
+    gap: $spacing-xs;
+    justify-content: center;
+    border-radius: $border-radius-md;
+    color: var(--text-color);
+    text-decoration: none;
+   flex: 1;
+    
+
+    // Apply hover effect for links
+    &:hover {
+      color: $primary-color;
+      background: rgba($primary-color, 0.05);
+      border-color: $primary-color;
+      transform: translateY(-2px);
+    }
+
+    // styles for demo button
+    &--main {
+      border-color: transparent;
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      color: white;
+      
+
+      &:hover {
+        background: linear-gradient(135deg, $secondary-color, $primary-color);
+        box-shadow: $shadow-md;
+        color: white;
+        
+      }
+    }
+
+    span {
+      font-size: $font-size-sm;
+    }
+  }
+
+  // Styles for mobile view
+  @include mobile {
+    &__links {
+      gap: $spacing-sm;
+      flex-direction: column;
+      
+    }
+
+    &__link {
+      flex: none; 
+    }
+  }
+}
