@@ -5,54 +5,49 @@ import './About.scss';
 const About = () => {
   const skills = {
     technical: [
-      { name: 'JavaScript (ES6+)', level: 90 },
-      { name: 'React.js', level: 85 },
-      { name: 'Node.js', level: 80 },
-      { name: 'HTML/CSS', level: 95 },
-      { name: 'SASS/SCSS', level: 90 },
-      { name: 'MongoDB', level: 75 },
-      { name: 'Git & GitHub', level: 85 },
-      { name: 'Responsive Design', level: 90 }
+      { name: 'JavaScript', level: 60 },
+      { name: 'React.js', level: 50 },
+      { name: 'Node.js', level: 40 },
+      { name: 'HTML', level: 80 },
+      { name: 'SASS/SCSS', level: 50 },
+      { name: 'MongoDB', level: 40 },
+      { name: 'Git & GitHub', level: 75 },
+      { name: 'Responsive Design', level: 50 }
     ],
     soft: [
-      'Problem Solving',
-      'Team Collaboration',
+      
+      
       'Communication',
       'Time Management',
-      'Adaptability',
+      'Leadership',
       'Critical Thinking',
-      'Attention to Detail',
       'Continuous Learning'
     ]
   };
 
   const experience = [
     {
-      title: 'Frontend Developer Intern',
-      company: 'Tech Company',
-      period: '2023 - Present',
-      description: 'Developed responsive web applications using React.js and modern CSS techniques.'
-    },
-    {
-      title: 'Freelance Web Developer',
-      company: 'Self-Employed',
-      period: '2022 - 2023',
-      description: 'Built custom websites for small businesses and startups using various technologies.'
+      title: 'Banking Intern',
+      company: 'HNB Company',
+      period: '2023',
+      description: 'Improved knowledge about banking sector'
     }
+   
   ];
+
 
   const education = [
     {
       degree: 'Bachelor of Information and Communication Technology',
-      institution: 'Your University',
-      period: '2021 - Present',
-      description: 'Specializing in Web Development and Software Engineering'
+      institution: 'University of Sri Jayawardenepura',
+      period: '2024 - Present',
+      description: 'Studies in department of ICT'
     },
     {
-      degree: 'Full Stack Web Development Bootcamp',
-      institution: 'Online Platform',
-      period: '2022',
-      description: 'Intensive program covering MERN stack development'
+      degree: 'NVQ level 03',
+      institution: 'VTA',
+      period: '2020',
+      description: 'Qualified computer application assistant'
     }
   ];
 
@@ -87,9 +82,8 @@ const About = () => {
         >
           <motion.h1 variants={itemVariants}>About Me</motion.h1>
           <motion.p className="about__intro" variants={itemVariants}>
-            I'm a passionate full-stack developer with a love for creating beautiful, 
-            functional web applications. My journey in tech started with curiosity and 
-            has evolved into a commitment to building solutions that make a difference.
+            I'm a passionate to be a  web developer with a love for creating beautiful, 
+            functional web applications. 
           </motion.p>
         </motion.section>
 
@@ -105,20 +99,13 @@ const About = () => {
             <h2>My Journey</h2>
             <div className="about__story-text">
               <p>
-                My passion for web development began during my first year at university when 
-                I discovered the power of turning ideas into interactive experiences. What started 
-                as simple HTML pages quickly evolved into complex applications built with modern 
-                frameworks and technologies.
+               I'm an undergraduate in university of Sri Jayawardenepura
               </p>
               <p>
-                I believe in writing clean, maintainable code and staying up-to-date with the 
-                latest industry trends. When I'm not coding, you can find me exploring new 
-                technologies, contributing to open-source projects, or sharing knowledge with 
-                the developer community.
+                I 'm studying' in department of ICT
               </p>
               <p>
-                My goal is to create web applications that not only look great but also provide 
-                exceptional user experiences and solve real-world problems.
+                My goal is to create web applications for real-world concequences.
               </p>
             </div>
           </motion.div>
