@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiPhone, FiMapPin, FiSend, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
-import './Contact.scss';
-
+import './Contact.scss';   //import useSate from react library, motion from frmaer-motion, icons from react library and Contact.scss for styling
+//define Contact component
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -20,7 +20,7 @@ const Contact = () => {
       [name]: value
     }));
   };
-
+//validate form
   const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
@@ -306,4 +306,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contact;  //export to use in other pages

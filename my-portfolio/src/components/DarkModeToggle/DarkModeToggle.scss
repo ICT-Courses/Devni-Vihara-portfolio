@@ -3,19 +3,20 @@
 
 .dark-mode-toggle {
   position: relative;
-  width: 50px;
-  height: 26px;
+   width: 50px;
+   height: 26px;
   border: none;
   border-radius: $border-radius-full;
-  background: linear-gradient(135deg, $primary-color, $secondary-color);
+background: linear-gradient(135deg, $primary-color, $secondary-color);
   cursor: pointer;
-  transition: all $transition-normal;
+  
   padding: 0;
   overflow: hidden;
+  transition: all $transition-normal;
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba($primary-color, 0.3);
+  box-shadow: 0 0 20px rgba($primary-color, 0.3);
   }
 
   &__icon {
@@ -23,16 +24,17 @@
     top: 50%;
     left: 3px;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+     width: 20px;
+     height: 20px;
     background: white;
     border-radius: 50%;
-    display: flex;
+      display: flex;
     align-items: center;
-    justify-content: center;
-    transition: all $transition-normal;
-    font-size: $font-size-sm;
+     justify-content: center;
+    
+     font-size: $font-size-sm;
     color: $primary-color;
+    transition: all $transition-normal;
 
     .dark-mode & {
       left: calc(100% - 23px);

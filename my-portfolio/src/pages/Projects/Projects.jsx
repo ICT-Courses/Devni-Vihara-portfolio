@@ -10,7 +10,7 @@ const Projects = () => {
   const [filter, setFilter] = useState('all');
   const [filteredProjects, setFilteredProjects] = useState(projectsData);
   
-  // Fetch GitHub repositories using custom hook
+  // fetch GitHub repos from custom hook
   const { data: githubRepos, loading, error } = useFetch(
     `https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=6`
   );
@@ -53,7 +53,7 @@ const Projects = () => {
   return (
     <div className="projects">
       <div className="container">
-        {/* Hero Section */}
+        {/* main part */}
         <motion.section 
           className="projects__hero"
           initial="hidden"
@@ -66,7 +66,7 @@ const Projects = () => {
           </motion.p>
         </motion.section>
 
-        {/* Filter Buttons */}
+        {/* fiter buttons */}
         <motion.section 
           className="projects__filters"
           initial="hidden"
@@ -120,7 +120,7 @@ const Projects = () => {
           </div>
         </motion.section>
 
-        {/* GitHub Repositories Section */}
+        {/* GitHub repo section */}
         <motion.section 
           className="github-repos"
           initial="hidden"
@@ -158,8 +158,8 @@ const Projects = () => {
                   <div className="repo-card__header">
                     <h3>{repo.name}</h3>
                     <div className="repo-card__stats">
-                      <span>⭐ {repo.stargazers_count}</span>
-                      <span>🍴 {repo.forks_count}</span>
+                      <span> {repo.stargazers_count}</span>
+                      <span> {repo.forks_count}</span>
                     </div>
                   </div>
                   
@@ -238,4 +238,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default Projects; //export to use in other pages

@@ -9,14 +9,14 @@ const ProjectCard = ({ project, index }) => {
       className="project-card"
       // animation start
       initial={{ opacity: 0, y: 60 }}
-      // 
+      
       animate={{ opacity: 1, y: 0 }}
-      // 
+      
       transition={{ duration: 0.6, delay: index * 0.15 }}
       // animation end 
       whileHover={{ y: -8 }}
     >
-      {/* Project image */}
+      {/* image of the project */}
       <div className="project-card__image">
         <img
           src={project.image}          

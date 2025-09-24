@@ -1,41 +1,41 @@
 import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi';
-import './Footer.scss';
-
+import './Footer.scss';   //import icons fromreact and Footer.scss for styling
+//define a component for footer
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__content">
-          {/* Social Links */}
+          {/* Social Links to connect my social media accounts */}
           <div className="footer__social">
             <a 
               href="https://github.com/Devni-Hewasundara" 
               target="_blank" 
-              rel="noopener noreferrer"
+              
               className="footer__social-link"
-              aria-label="GitHub Profile"
+              
             >
               <FiGithub />
             </a>
             <a 
               href="https://linkedin.com/in/DevniVihara" 
               target="_blank" 
-              rel="noopener noreferrer"
+              
               className="footer__social-link"
-              aria-label="LinkedIn Profile"
+             
             >
               <FiLinkedin />
             </a>
             <a 
               href="mailto:devnivihara52@gmail.com"
               className="footer__social-link"
-              aria-label="Email Contact"
+              
             >
               <FiMail />
             </a>
           </div>
 
-          {/* Copyright */}
+          {/* Copyright section */}
           <div className="footer__copyright">
             <p>
               Made with <FiHeart className="footer__heart" /> by Devni Vihara © {new Date().getFullYear()}
@@ -47,4 +47,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer; //export component to use in other pages and components

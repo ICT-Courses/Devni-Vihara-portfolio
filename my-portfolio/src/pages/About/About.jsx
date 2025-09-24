@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 import { FiCode, FiUsers, FiTrendingUp, FiAward } from 'react-icons/fi';
-import './About.scss';
+import './About.scss';   //import icons from react library, motion from framer-motion and About.scss for styling
 
 const About = () => {
-  const skills = {
+  const skills = {                                    // languages and teachnologies i know
     technical: [
       { name: 'JavaScript', level: 60 },
       { name: 'React.js', level: 50 },
@@ -17,7 +17,7 @@ const About = () => {
     soft: [
       
       
-      'Communication',
+      'Communication',                               //soft skills i have
       'Time Management',
       'Leadership',
       'Critical Thinking',
@@ -26,7 +26,7 @@ const About = () => {
   };
 
   const experience = [
-    {
+    {                                              //experiences i have
       title: 'Banking Intern',
       company: 'HNB Company',
       period: '2023',
@@ -36,7 +36,7 @@ const About = () => {
   ];
 
 
-  const education = [
+  const education = [                                                //educational qualifications i have
     {
       degree: 'Bachelor of Information and Communication Technology',
       institution: 'University of Sri Jayawardenepura',
@@ -73,7 +73,7 @@ const About = () => {
   return (
     <div className="about">
       <div className="container">
-        {/* Hero Section */}
+        {/* main section */}
         <motion.section 
           className="about__hero"
           initial="hidden"
@@ -87,7 +87,7 @@ const About = () => {
           </motion.p>
         </motion.section>
 
-        {/* Story Section */}
+        {/* my story */}
         <motion.section 
           className="about__story"
           initial="hidden"
@@ -111,7 +111,7 @@ const About = () => {
           </motion.div>
         </motion.section>
 
-        {/* Skills Section */}
+        {/* my skills section */}
         <motion.section 
           className="about__skills"
           initial="hidden"
@@ -122,7 +122,7 @@ const About = () => {
           <motion.h2 variants={itemVariants}>Skills & Expertise</motion.h2>
           
           <div className="skills__container">
-            {/* Technical Skills */}
+            {/* technical skills i have */}
             <motion.div className="skills__technical" variants={itemVariants}>
               <h3>
                 <FiCode />
@@ -153,7 +153,7 @@ const About = () => {
               </div>
             </motion.div>
 
-            {/* Soft Skills */}
+            {/* soft skills i have */}
             <motion.div className="skills__soft" variants={itemVariants}>
               <h3>
                 <FiUsers />
@@ -175,7 +175,7 @@ const About = () => {
           </div>
         </motion.section>
 
-        {/* Experience Section */}
+        {/* my experiences section */}
         <motion.section 
           className="about__experience"
           initial="hidden"
@@ -206,7 +206,7 @@ const About = () => {
           </div>
         </motion.section>
 
-        {/* Education Section */}
+        {/* educational qualification section */}
         <motion.section 
           className="about__education"
           initial="hidden"
@@ -241,4 +241,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default About;  //export to use in other pages

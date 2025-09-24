@@ -2,8 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
-import './Header.scss';
-
+import './Header.scss';    //import Link,useState and icons from reacr library and DarkModeToggle for toggle styling and Header.scss for styling header
+//define header component
 const Header = ({ darkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -26,38 +26,38 @@ const Header = ({ darkMode, toggleDarkMode }) => {
         <div className="header__content">
           {/* Logo */}
           <Link to="/" className="header__logo" onClick={closeMenu}>
-            <span className="header__logo-text">Portfolio</span>
+            <span className="header__logo-text">Devni Vihara</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* navigations for desktops */}
           <nav className="header__nav">
             <Link 
               to="/" 
-              className={`header__nav-link ${isActiveLink('/') ? 'active' : ''}`}
+              className={`header__nav-link ${isActiveLink('/') ? 'active' : ''}`}  
             >
-              Home
+              Home   {/*navigate to Home page*/}
             </Link>
             <Link 
               to="/about" 
               className={`header__nav-link ${isActiveLink('/about') ? 'active' : ''}`}
             >
-              About
+              About  {/*navigate to About page*/}
             </Link>
             <Link 
               to="/projects" 
               className={`header__nav-link ${isActiveLink('/projects') ? 'active' : ''}`}
             >
-              Projects
+              Projects {/*navigate to Projects page*/}
             </Link>
             <Link 
               to="/contact" 
               className={`header__nav-link ${isActiveLink('/contact') ? 'active' : ''}`}
             >
-              Contact
+              Contact  {/*navigate to Contact page*/}
             </Link>
           </nav>
 
-          {/* Dark Mode Toggle & Mobile Menu Button */}
+          {/* Dark mode toggle and mobile navigation button */}
           <div className="header__actions">
             <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             
@@ -71,7 +71,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* for navigations in mobile devices */}
         <nav className={`header__mobile-nav ${isMenuOpen ? 'open' : ''}`}>
           <Link 
             to="/" 
@@ -107,4 +107,4 @@ const Header = ({ darkMode, toggleDarkMode }) => {
   );
 };
 
-export default Header;
+export default Header;  //export to use in other pages and components
