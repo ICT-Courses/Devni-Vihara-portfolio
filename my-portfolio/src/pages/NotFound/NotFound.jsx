@@ -34,7 +34,7 @@ const NotFound = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Oops! Page Not Found
+            Error 404! Page Not Found
           </motion.h1>
 
           {/* description of the page */}
