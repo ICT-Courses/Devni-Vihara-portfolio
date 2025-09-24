@@ -1,195 +1,308 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
 
+.about {
+  padding: $spacing-3xl 0;
 
-/* Apply styles for full page */
-.about-student {
-     color: var(--text-color, hsl(215, 28%, 17%)); 
-     background: var(--bg-color, #f9fafb);   
-  padding: 4rem 1.5rem;
-  
-  
+  &__hero {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
 
-  .about-wrapper {
-    margin: 0 auto;
-    max-width: 1100px; 
-    
-  }
-
-  h1, h2, h3 {
-    color: var(--text-color);
-     margin-bottom: 1rem;
-    font-weight: 600;
-   
-    
-  }
-
-  p {
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-}
-
-/* Apply styles for introduction */
-.about-intro {
-  margin-bottom: 3rem;
-  text-align: center;
-  
-
-  .intro-text {
-     font-size: 1.1rem;
-     color: var(--text-secondary, #6b7280);
-    max-width: 700px; 
-    margin: 0 auto;
-   
-    
-  }
-}
-
-/* Apply styles for skills */
-.about-skills {
-  margin-bottom: 4rem;
-
-  .skills-box {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: 1fr;
-
-    
-    @media (min-width: 900px) {
-      grid-template-columns: 1fr 1fr;
+    h1 {
+      @include heading-1;
+      margin-bottom: $spacing-lg;
     }
   }
 
-  /* Apply styles for technical card */
-  .skill-card {
-    background: var(--card-bg, #ffffff);
-    border: 1px solid var(--border-color, #e5e7eb);
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease;
+  &__intro {
+    @include body-text;
+    font-size: $font-size-lg;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-    &:hover {
-      transform: translateY(-4px);
+  &__story {
+    margin-bottom: $spacing-3xl;
+
+    h2 {
+      @include heading-2;
+      text-align: center;
+      margin-bottom: $spacing-2xl;
     }
+  }
 
-    .skill-head {
+  &__story-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  &__story-text {
+    p {
+      @include body-text;
+      font-size: $font-size-lg;
+      line-height: 1.7;
+      margin-bottom: $spacing-lg;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__skills {
+    margin-bottom: $spacing-3xl;
+
+    h2 {
+      @include heading-2;
+      text-align: center;
+      margin-bottom: $spacing-2xl;
+    }
+  }
+
+  &__experience,
+  &__education {
+    margin-bottom: $spacing-3xl;
+
+    h2 {
+      @include heading-2;
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
+      align-items: center;
+      justify-content: center;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-2xl;
 
-    .skill-bar {
-      border-radius: 6px;
-      height: 6px;
-      background: #e5e7eb;
-      
-      
-      overflow: hidden;
-
-      .skill-progress {
-          border-radius: 6px;
-        height: 100%;
-       background: linear-gradient(90deg, #3b82f6, #06d6a0);
-      }
-    }
-  }
-
-  /* Apply styles for soft skills  */
-  .soft-list {
-     gap: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-   
-    
-
-    .soft-card {
-      border-radius: 8px;
-      border: 1px solid var(--border-color, #e5e7eb);
-      background: var(--card-bg, #ffffff);
-       text-align: center;
-      font-size: 0.9rem;
-      padding: 0.75rem;
-      transition: transform 0.2s ease;
-     cursor: default;
-      
-
-      &:hover {
-        transform: scale(1.05);
+      svg {
+        color: $primary-color;
       }
     }
   }
 }
 
-/* Apply styles for timeline */
+// Skills Section
+.skills__container {
+  display: grid;
+  gap: $spacing-2xl;
+
+  @include desktop {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.skills__technical,
+.skills__soft {
+  @include card;
+
+  h3 {
+    @include heading-3;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-xl;
+    color: var(--text-color);
+
+    svg {
+      color: $primary-color;
+    }
+  }
+}
+
+.skills__list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.skill-item {
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__name {
+    font-weight: $font-weight-medium;
+    color: var(--text-color);
+  }
+
+  &__level {
+    font-size: $font-size-sm;
+    color: $primary-color;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__bar {
+    height: 8px;
+    background: var(--border-color);
+    border-radius: $border-radius-full;
+    overflow: hidden;
+  }
+
+  &__progress {
+    height: 100%;
+    background: linear-gradient(135deg, $primary-color, $secondary-color);
+    border-radius: $border-radius-full;
+    transition: width 1s ease;
+  }
+}
+
+.soft-skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: $spacing-md;
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.soft-skill-item {
+  padding: $spacing-md;
+  background: rgba($primary-color, 0.1);
+  border: 2px solid rgba($primary-color, 0.2);
+  border-radius: $border-radius-md;
+  text-align: center;
+  font-weight: $font-weight-medium;
+  color: var(--text-color);
+  transition: all $transition-normal;
+  cursor: default;
+
+  &:hover {
+    background: rgba($primary-color, 0.15);
+    border-color: $primary-color;
+    color: $primary-color;
+    transform: translateY(-2px);
+  }
+}
+
+// Timeline Section
 .timeline {
-  border-left: 2px solid var(--border-color, #e5e7eb);
-  margin: 2rem 0;
-  padding-left: 1.5rem;
- 
   position: relative;
-  
-  
+  max-width: 800px;
+  margin: 0 auto;
 
-  
-  .timeline-card {
-    padding-left: 1rem;
-     margin-bottom: 2rem;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, $primary-color, $secondary-color);
+
+    @include desktop {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__item {
     position: relative;
-   
-    
+    margin-bottom: $spacing-2xl;
+    padding-left: 60px;
 
-    
-    .timeline-dot {
-      width: 14px;
-      height: 14px;
-      position: absolute;
-      left: -0.65rem;
-      top: 0.5rem;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      background: #3b82f6; 
-      
-      
+    @include desktop {
+      width: 50%;
+      padding-left: 0;
+      padding-right: $spacing-xl;
+
+      &:nth-child(even) {
+        left: 50%;
+        padding-left: $spacing-xl;
+        padding-right: 0;
+
+        .timeline__marker {
+          left: -10px;
+        }
+      }
     }
 
-    
-    .timeline-body {
-      padding: 1rem;
-      border: 1px solid var(--border-color, #e5e7eb);
-      background: var(--card-bg, #ffffff);
-      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-      
-      border-radius: 10px;
-      
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 
-      h3 {
-        margin-bottom: 0.3rem;
-        font-size: 1.1rem;
-        
-      }
+  &__marker {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, $primary-color, $secondary-color);
+    border: 3px solid var(--bg-color);
+    border-radius: 50%;
+    z-index: 2;
 
-      h4 {
-        color: var(--text-secondary, #6b7280);
-        margin-bottom: 0.3rem;
-        font-size: 0.95rem;
-        
-        
-      }
+    @include desktop {
+      left: calc(50% - 10px);
+    }
+  }
 
-      span {
-        display: block;
-        color: var(--text-secondary, #9ca3af);
-        margin-bottom: 0.5rem;
-        font-size: 0.8rem;
-        
-        
-      }
+  &__content {
+    @include card;
+    position: relative;
 
-      p {
-        font-size: 0.9rem;
-      }
+    h3 {
+      @include heading-3;
+      color: var(--text-color);
+      margin-bottom: $spacing-xs;
+    }
+
+    h4 {
+      color: $primary-color;
+      font-weight: $font-weight-semibold;
+      margin-bottom: $spacing-sm;
+    }
+
+    p {
+      @include body-text;
+      margin-bottom: $spacing-sm;
+      line-height: 1.6;
+    }
+  }
+
+  &__period {
+    display: inline-block;
+    padding: $spacing-xs $spacing-sm;
+    background: rgba($primary-color, 0.1);
+    color: $primary-color;
+    border-radius: $border-radius-full;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-md;
+  }
+}
+
+// Mobile Adjustments
+@include mobile {
+  .about {
+    padding: $spacing-2xl 0;
+
+    &__story,
+    &__skills,
+    &__experience,
+    &__education {
+      margin-bottom: $spacing-2xl;
+    }
+  }
+
+  .skills__container {
+    grid-template-columns: 1fr;
+    gap: $spacing-xl;
+  }
+
+  .timeline {
+    &::before {
+      left: 15px;
+    }
+
+    &__item {
+      padding-left: 50px;
+    }
+
+    &__marker {
+      left: 5px;
+      width: 16px;
+      height: 16px;
     }
   }
 }

@@ -1,7 +1,7 @@
 
 import { motion } from 'framer-motion'; //import framer-motion
 import { FiCode, FiUsers, FiBookOpen, FiAward } from 'react-icons/fi'; //import react-icons from library
-import './AboutStudent.scss'; //import About.scss for styling
+import './About.scss'; //import About.scss for styling
 
 const AboutStudent = () => {
   // Skills (teachical skills and soft skills)
