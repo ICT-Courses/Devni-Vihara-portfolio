@@ -58,11 +58,10 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus('');
 
-    // Simulate form submission (replace with actual form handling)
+    // add a try catch block
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Here you would typically send the data to your backend
       console.log('Form data:', formData);
       
       setSubmitStatus('Message sent successfully! I\'ll get back to you soon.');
@@ -83,20 +82,20 @@ const Contact = () => {
     {
       icon: <FiMail />,
       label: 'Email',
-      value: 'your.email@example.com',
-      href: 'mailto:your.email@example.com'
+      value:'devnivihara52@gmail.com',
+      href: 'mailto:devnivihara52@gmail.com'
     },
     {
       icon: <FiPhone />,
       label: 'Phone',
-      value: '+94 123 456 789',
-      href: 'tel:+94123456789'
+      value: '+94 779 472 526',
+      href: 'tel:+94779472526'
     },
     {
       icon: <FiMapPin />,
       label: 'Location',
-      value: 'Negombo, Sri Lanka',
-      href: null
+      value: 'Gangolawila,Nugegoda',
+      href: 'Gangodawila,Nugegoda'
     }
   ];
 
@@ -104,21 +103,16 @@ const Contact = () => {
     {
       icon: <FiGithub />,
       name: 'GitHub',
-      url: 'https://github.com/yourusername',
+      url: 'https://github.com/Devni-Hewasundara',
       color: '#333'
     },
     {
       icon: <FiLinkedin />,
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/yourusername',
+      url: 'https://linkedin.com/in/DevniVihara',
       color: '#0077b5'
-    },
-    {
-      icon: <FiTwitter />,
-      name: 'Twitter',
-      url: 'https://twitter.com/yourusername',
-      color: '#1da1f2'
     }
+    
   ];
 
   const containerVariants = {
@@ -143,7 +137,7 @@ const Contact = () => {
   return (
     <div className="contact">
       <div className="container">
-        {/* Hero Section */}
+        {/* main part */}
         <motion.section 
           className="contact__hero"
           initial="hidden"
@@ -152,12 +146,12 @@ const Contact = () => {
         >
           <motion.h1 variants={itemVariants}>Get In Touch</motion.h1>
           <motion.p className="contact__subtitle" variants={itemVariants}>
-            Have a project in mind or want to collaborate? I'd love to hear from you!
+            If you have an idea to build a website contact me
           </motion.p>
         </motion.section>
 
         <div className="contact__content">
-          {/* Contact Form */}
+          
           <motion.section 
             className="contact__form-section"
             initial="hidden"
@@ -176,7 +170,7 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="Your full name"
+                      placeholder="Full name"
                       required
                     />
                   </div>
@@ -215,7 +209,7 @@ const Contact = () => {
                     rows="6"
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="Tell me about your project or idea..."
+                    placeholder="Tell your idea"
                     required
                     minLength="10"
                   ></textarea>
@@ -259,7 +253,7 @@ const Contact = () => {
               <h2>Let's connect</h2>
               <p>
                 I'm always interested in hearing about new opportunities and projects. 
-                Whether you have a question or just want to say hi, feel free to reach out!
+                
               </p>
               
               <div className="contact__info-list">
