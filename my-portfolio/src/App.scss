@@ -1,36 +1,20 @@
 @import './styles/variables';
 
-// change styles that affected the whole website
-.full-app-content {
-  display: flex;                  
-  flex-direction: column;         
-  transition: all 0.2s ease;   
-  min-height: 100vh;    
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
 
-
-  // Styles for Dark Mode
   &.dark-mode {
-    --bg-color: #{$dark-bg}; 
-     --border-color: #{$dark-border};          
-    --text-color: #{$dark-text};      
-    --card-bg: #{$dark-card-bg};      
-    
-  }
-
-  // Styles for light mode 
-  &.light-mode {
-    --bg-color: #{$light-bg};
-    --card-bg: #{$light-card-bg};
-    --border-color: #{$light-border};
-    --text-color: #{$light-text};
+    --bg-color: #{$dark-bg};
+    --text-color: #{$dark-text};
+    --card-bg: #{$dark-card-bg};
+    --border-color: #{$dark-border};
   }
 }
 
-// Styles for main section
-.main-section {
-  flex: 1;    
-  color: var(--text-color);                     
-  background-color: var(--bg-color);
-   padding-top: $header-height;  //space for header to prevent overlap header and content 
-  
+.main-content {
+  flex: 1;
+  padding-top: $header-height;
 }
