@@ -1,128 +1,163 @@
+import { motion } from 'framer-motion';
+import { FiCode, FiUsers, FiTrendingUp, FiAward } from 'react-icons/fi';
+import './About.scss';
 
-import { motion } from 'framer-motion'; //import framer-motion
-import { FiCode, FiUsers, FiBookOpen, FiAward } from 'react-icons/fi'; //import react-icons from library
-import './About.scss'; //import About.scss for styling
-
-const AboutStudent = () => {
-  // Skills (teachical skills and soft skills)
-  const mySkills = {
+const About = () => {
+  const skills = {
     technical: [
-      { name: 'C#', level: 85 },
-      
-      { name: 'Python', level: 85},
-      { name: 'HTML / CSS', level: 90 },
-      { name: 'JavaScript ', level: 55},
-      { name: 'React (Learning)', level: 50},
-      { name: 'MySQL / Databases', level: 80 },
-      { name: 'Git & GitHub', level: 75 }
+      { name: 'JavaScript (ES6+)', level: 90 },
+      { name: 'React.js', level: 85 },
+      { name: 'Node.js', level: 80 },
+      { name: 'HTML/CSS', level: 95 },
+      { name: 'SASS/SCSS', level: 90 },
+      { name: 'MongoDB', level: 75 },
+      { name: 'Git & GitHub', level: 85 },
+      { name: 'Responsive Design', level: 90 }
     ],
     soft: [
-      
       'Problem Solving',
+      'Team Collaboration',
+      'Communication',
       'Time Management',
       'Adaptability',
-      'Creative Thinking',
-      'Self-Learning',
-      'Leadership (Student Projects)'
+      'Critical Thinking',
+      'Attention to Detail',
+      'Continuous Learning'
     ]
   };
 
-  // My projects
-  const projects = [
+  const experience = [
     {
-      title: 'Event Planner Desktop App',
-      role: 'Personal Project',
-      period: '2025 ',
-      description:
-        'Developed a standalone event planner with WPF and MySQL for event management'
+      title: 'Frontend Developer Intern',
+      company: 'Tech Company',
+      period: '2023 - Present',
+      description: 'Developed responsive web applications using React.js and modern CSS techniques.'
     },
     {
-      title: 'Portfolio Website',
-      role: 'Personal Project',
-      period: '2025 (Ongoing)',
-      description:
-        'Building my own protfolio website to showcase my skills'
+      title: 'Freelance Web Developer',
+      company: 'Self-Employed',
+      period: '2022 - 2023',
+      description: 'Built custom websites for small businesses and startups using various technologies.'
     }
   ];
 
-  // Education simplified for student
-  const studies = [
+  const education = [
     {
-      degree: 'BSc. in Information and Commiunication Technology',
-      institution: 'University of Sri Jayewardenepura, Sri Lanka',
-      period: '2024-Present',
-      description: 'Studies in Department of ICT in Humanities and Social Sciences'
+      degree: 'Bachelor of Information and Communication Technology',
+      institution: 'Your University',
+      period: '2021 - Present',
+      description: 'Specializing in Web Development and Software Engineering'
     },
     {
-      degree: 'NVQ Level 3',
-      institution: 'VTA',
-      period: '2021',
-      description: 'Studied computer apllication assistant'
+      degree: 'Full Stack Web Development Bootcamp',
+      institution: 'Online Platform',
+      period: '2022',
+      description: 'Intensive program covering MERN stack development'
     }
   ];
 
-  // Animations
-  const sectionVariants = {
+  const containerVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 25 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
+    }
   };
 
   return (
-    <div className="about-student">
-      <div className="about-wrapper">
-        {/* Introduction*/}
-        <motion.section
-          className="about-intro"
+    <div className="about">
+      <div className="container">
+        {/* Hero Section */}
+        <motion.section 
+          className="about__hero"
           initial="hidden"
           animate="visible"
-          variants={sectionVariants}
+          variants={containerVariants}
         >
           <motion.h1 variants={itemVariants}>About Me</motion.h1>
-          <motion.p className="intro-text" variants={itemVariants}>
-            Hello  I’m an undergraduate student passionate about coding,
-            learning new technologies, and building projects that make life
-            easier. I enjoy turning ideas into real applications and working
-            with friends on group projects.
+          <motion.p className="about__intro" variants={itemVariants}>
+            I'm a passionate full-stack developer with a love for creating beautiful, 
+            functional web applications. My journey in tech started with curiosity and 
+            has evolved into a commitment to building solutions that make a difference.
           </motion.p>
         </motion.section>
 
-        {/* My skills*/}
-        <motion.section
-          className="about-skills"
+        {/* Story Section */}
+        <motion.section 
+          className="about__story"
           initial="hidden"
           whileInView="visible"
-          variants={sectionVariants}
+          variants={containerVariants}
           viewport={{ once: true }}
         >
-          <motion.h2 variants={itemVariants}>My Skills</motion.h2>
-          <div className="skills-box">
-            {/* Technical skills*/}
-            <motion.div className="skills-tech" variants={itemVariants}>
+          <motion.div className="about__story-content" variants={itemVariants}>
+            <h2>My Journey</h2>
+            <div className="about__story-text">
+              <p>
+                My passion for web development began during my first year at university when 
+                I discovered the power of turning ideas into interactive experiences. What started 
+                as simple HTML pages quickly evolved into complex applications built with modern 
+                frameworks and technologies.
+              </p>
+              <p>
+                I believe in writing clean, maintainable code and staying up-to-date with the 
+                latest industry trends. When I'm not coding, you can find me exploring new 
+                technologies, contributing to open-source projects, or sharing knowledge with 
+                the developer community.
+              </p>
+              <p>
+                My goal is to create web applications that not only look great but also provide 
+                exceptional user experiences and solve real-world problems.
+              </p>
+            </div>
+          </motion.div>
+        </motion.section>
+
+        {/* Skills Section */}
+        <motion.section 
+          className="about__skills"
+          initial="hidden"
+          whileInView="visible"
+          variants={containerVariants}
+          viewport={{ once: true }}
+        >
+          <motion.h2 variants={itemVariants}>Skills & Expertise</motion.h2>
+          
+          <div className="skills__container">
+            {/* Technical Skills */}
+            <motion.div className="skills__technical" variants={itemVariants}>
               <h3>
-                <FiCode /> Technical Skills
+                <FiCode />
+                Technical Skills
               </h3>
-              <div className="skills-list">
-                {mySkills.technical.map((skill, idx) => (
-                  <motion.div
-                    key={skill.name}
-                    className="skill-card"
+              <div className="skills__list">
+                {skills.technical.map((skill, index) => (
+                  <motion.div 
+                    key={skill.name} 
+                    className="skill-item"
                     variants={itemVariants}
                   >
-                    <div className="skill-head">
-                      <span>{skill.name}</span>
-                      <span>{skill.level}%</span>
+                    <div className="skill-item__header">
+                      <span className="skill-item__name">{skill.name}</span>
+                      <span className="skill-item__level">{skill.level}%</span>
                     </div>
-                    <div className="skill-bar">
-                      <motion.div
-                        className="skill-progress"
+                    <div className="skill-item__bar">
+                      <motion.div 
+                        className="skill-item__progress"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: idx * 0.1 }}
+                        transition={{ duration: 1, delay: index * 0.1 }}
                         viewport={{ once: true }}
                       />
                     </div>
@@ -131,15 +166,17 @@ const AboutStudent = () => {
               </div>
             </motion.div>
 
-            {/* Soft skills*/}            <motion.div className="skills-soft" variants={itemVariants}>
+            {/* Soft Skills */}
+            <motion.div className="skills__soft" variants={itemVariants}>
               <h3>
-                <FiUsers /> Soft Skills
+                <FiUsers />
+                Soft Skills
               </h3>
-              <div className="soft-list">
-                {mySkills.soft.map((skill, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="soft-card"
+              <div className="soft-skills__grid">
+                {skills.soft.map((skill, index) => (
+                  <motion.div 
+                    key={skill} 
+                    className="soft-skill-item"
                     variants={itemVariants}
                     whileHover={{ scale: 1.05 }}
                   >
@@ -151,51 +188,61 @@ const AboutStudent = () => {
           </div>
         </motion.section>
 
-        {/* My projects*/}
-        <motion.section
-          className="about-projects"
+        {/* Experience Section */}
+        <motion.section 
+          className="about__experience"
           initial="hidden"
           whileInView="visible"
-          variants={sectionVariants}
+          variants={containerVariants}
           viewport={{ once: true }}
         >
           <motion.h2 variants={itemVariants}>
-            <FiBookOpen /> Projects & Activities
+            <FiTrendingUp />
+            Experience
           </motion.h2>
           <div className="timeline">
-            {projects.map((proj, idx) => (
-              <motion.div key={idx} className="timeline-card" variants={itemVariants}>
-                <div className="timeline-dot"></div>
-                <div className="timeline-body">
-                  <h3>{proj.title}</h3>
-                  <h4>{proj.role}</h4>
-                  <span>{proj.period}</span>
-                  <p>{proj.description}</p>
+            {experience.map((exp, index) => (
+              <motion.div 
+                key={index} 
+                className="timeline__item"
+                variants={itemVariants}
+              >
+                <div className="timeline__marker"></div>
+                <div className="timeline__content">
+                  <h3>{exp.title}</h3>
+                  <h4>{exp.company}</h4>
+                  <span className="timeline__period">{exp.period}</span>
+                  <p>{exp.description}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
-        {/* Education qualifications*/}
-        <motion.section
-          className="about-edu"
+        {/* Education Section */}
+        <motion.section 
+          className="about__education"
           initial="hidden"
           whileInView="visible"
-          variants={sectionVariants}
+          variants={containerVariants}
           viewport={{ once: true }}
         >
           <motion.h2 variants={itemVariants}>
-            <FiAward /> Education
+            <FiAward />
+            Education
           </motion.h2>
           <div className="timeline">
-            {studies.map((edu, idx) => (
-              <motion.div key={idx} className="timeline-card" variants={itemVariants}>
-                <div className="timeline-dot"></div>
-                <div className="timeline-body">
+            {education.map((edu, index) => (
+              <motion.div 
+                key={index} 
+                className="timeline__item"
+                variants={itemVariants}
+              >
+                <div className="timeline__marker"></div>
+                <div className="timeline__content">
                   <h3>{edu.degree}</h3>
                   <h4>{edu.institution}</h4>
-                  <span>{edu.period}</span>
+                  <span className="timeline__period">{edu.period}</span>
                   <p>{edu.description}</p>
                 </div>
               </motion.div>
@@ -207,5 +254,4 @@ const AboutStudent = () => {
   );
 };
 
-export default AboutStudent;
- 
+export default About;
