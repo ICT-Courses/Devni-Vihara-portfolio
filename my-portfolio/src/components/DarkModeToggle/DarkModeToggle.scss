@@ -1,32 +1,42 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
 
-
-/* Styles for dark-mode-toggle class */
 .dark-mode-toggle {
-  cursor: pointer; 
-  background: none;   
-  transition: background 0.3s ease;       
-  border-radius: 50%;    
-  padding: 8px;       
-   border: none;
-  
+  position: relative;
+  width: 50px;
+  height: 26px;
+  border: none;
+  border-radius: $border-radius-full;
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  cursor: pointer;
+  transition: all $transition-normal;
+  padding: 0;
+  overflow: hidden;
 
-  /* Apply hover effect for toggle button */
   &:hover {
-    background: rgba(0, 0, 0, 0.1); 
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba($primary-color, 0.3);
   }
 
-  /* Apply focus effect for toggle button*/
-  &:focus {
-    outline: 2px solid #3b82f6; 
-    outline-offset: 2px;       
-  }
-
-  /* Styles for icons moon and sun */
   &__icon {
-    font-size: 1.4rem; 
-    color: var(--text-color, #1f2937); 
-    display: flex;     
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
+    transition: all $transition-normal;
+    font-size: $font-size-sm;
+    color: $primary-color;
+
+    .dark-mode & {
+      left: calc(100% - 23px);
+      color: $secondary-color;
+    }
   }
 }
