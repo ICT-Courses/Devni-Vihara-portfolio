@@ -1,40 +1,26 @@
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FiGithub, FiExternalLink, FiFilter } from 'react-icons/fi';
+import ProjectCard from '../../components/ProjectCard/ProjectCard';
+import { projectsData, githubUsername } from '../../data/projects';
+import useFetch from '../../hooks/useFetch';
+import './Projects.scss';
 
-import { useState, useEffect } from 'react'; //import react hooks
-
-import { motion } from 'framer-motion';//import motion from animation
-
-import { FiGithub, FiExternalLink, FiFilter } from 'react-icons/fi';//import icons from reacr icons
-
-import ProjectCard from '../../components/ProjectCard/ProjectCard';//import ProjectCard component
-
-import { projectsData, githubUsername } from '../../data/projects';//import projects.js 
-
-import useFetch from '../../hooks/useFetch';//import custom hook to fetch data
-
-import './Projects.scss';//import Projects.scss for styling 
-
-// define main component
 const Projects = () => {
-  // State to store used filter
   const [filter, setFilter] = useState('all');
-  // store filtered project list
   const [filteredProjects, setFilteredProjects] = useState(projectsData);
   
-  // use custom hook to fetch GitHub repos
+  // Fetch GitHub repositories using custom hook
   const { data: githubRepos, loading, error } = useFetch(
-    `https://api.github.com/users/${Devni-Hewasundara}/repos?sort=updated&per_page=6`
+    `https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=6`
   );
 
-  // update list of projects
   useEffect(() => {
     if (filter === 'all') {
-      // dispaly all projects
       setFilteredProjects(projectsData);
     } else if (filter === 'featured') {
-      
       setFilteredProjects(projectsData.filter(project => project.featured));
     } else {
-      
       setFilteredProjects(
         projectsData.filter(project => 
           project.technologies.some(tech => 
@@ -43,34 +29,31 @@ const Projects = () => {
         )
       );
     }
-  }, [filter]); 
+  }, [filter]);
 
-  // set animations
   const containerVariants = {
-    hidden: { opacity: 0 }, 
+    hidden: { opacity: 0 },
     visible: {
-      opacity: 1, 
+      opacity: 1,
       transition: {
-        staggerChildren: 0.1 
+        staggerChildren: 0.1
       }
     }
   };
 
-  // animations for items
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 }, 
+    hidden: { opacity: 0, y: 30 },
     visible: {
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6 } 
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
     }
   };
 
   return (
     <div className="projects">
       <div className="container">
-
-        {/* main section consists of title and description */}
+        {/* Hero Section */}
         <motion.section 
           className="projects__hero"
           initial="hidden"
@@ -83,7 +66,7 @@ const Projects = () => {
           </motion.p>
         </motion.section>
 
-        {/* filter buttons */}
+        {/* Filter Buttons */}
         <motion.section 
           className="projects__filters"
           initial="hidden"
@@ -91,30 +74,25 @@ const Projects = () => {
           variants={containerVariants}
         >
           <motion.div className="filter-buttons" variants={itemVariants}>
-            {/* filter icons */}
             <FiFilter className="filter-icon" />
-            {/* button for display all projects */}
             <button 
               className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
               onClick={() => setFilter('all')}
             >
               All Projects
             </button>
-            {/* Button to show only featured projects */}
             <button 
               className={`filter-btn ${filter === 'featured' ? 'active' : ''}`}
               onClick={() => setFilter('featured')}
             >
               Featured
             </button>
-            {/* Button to show React projects */}
             <button 
               className={`filter-btn ${filter === 'react' ? 'active' : ''}`}
               onClick={() => setFilter('react')}
             >
               React
             </button>
-            {/* Button to show JavaScript projects */}
             <button 
               className={`filter-btn ${filter === 'javascript' ? 'active' : ''}`}
               onClick={() => setFilter('javascript')}
@@ -124,7 +102,7 @@ const Projects = () => {
           </motion.div>
         </motion.section>
 
-        {/* project grids */}
+        {/* Featured Projects */}
         <motion.section 
           className="projects__grid"
           initial="hidden"
@@ -132,7 +110,6 @@ const Projects = () => {
           variants={containerVariants}
         >
           <div className="projects__container">
-            
             {filteredProjects.map((project, index) => (
               <ProjectCard 
                 key={project.id} 
@@ -143,20 +120,19 @@ const Projects = () => {
           </div>
         </motion.section>
 
-        {/* GitHub repos */}
+        {/* GitHub Repositories Section */}
         <motion.section 
           className="github-repos"
           initial="hidden"
           whileInView="visible"
           variants={containerVariants}
-          viewport={{ once: true }} 
+          viewport={{ once: true }}
         >
           <motion.h2 variants={itemVariants}>
             <FiGithub />
             Latest from GitHub
           </motion.h2>
           
-          {/* display loading state */}
           {loading && (
             <motion.div className="github-repos__loading" variants={itemVariants}>
               <div className="loading"></div>
@@ -164,14 +140,12 @@ const Projects = () => {
             </motion.div>
           )}
           
-          {/* dispaly an error message */}
           {error && (
             <motion.div className="github-repos__error" variants={itemVariants}>
               <p>Unable to fetch repositories. Please check back later.</p>
             </motion.div>
           )}
           
-          {/* Show repository list when data is available */}
           {githubRepos && !loading && (
             <motion.div className="github-repos__grid" variants={itemVariants}>
               {githubRepos.slice(0, 6).map((repo, index) => (
@@ -179,23 +153,20 @@ const Projects = () => {
                   key={repo.id} 
                   className="repo-card"
                   variants={itemVariants}
-                  whileHover={{ y: -5 }} 
+                  whileHover={{ y: -5 }}
                 >
-                  {/* Repo header  */}
                   <div className="repo-card__header">
                     <h3>{repo.name}</h3>
                     <div className="repo-card__stats">
-                      <span> {repo.stargazers_count}</span>
-                      <span> {repo.forks_count}</span>
+                      <span>⭐ {repo.stargazers_count}</span>
+                      <span>🍴 {repo.forks_count}</span>
                     </div>
                   </div>
                   
-                  {/* Repo description */}
                   <p className="repo-card__description">
                     {repo.description || 'No description available'}
                   </p>
                   
-                  {/* Repo footer  */}
                   <div className="repo-card__footer">
                     <div className="repo-card__language">
                       {repo.language && (
@@ -206,7 +177,6 @@ const Projects = () => {
                     </div>
                     
                     <div className="repo-card__links">
-                      {/* GitHub link */}
                       <a 
                         href={repo.html_url}
                         target="_blank"
@@ -216,7 +186,6 @@ const Projects = () => {
                       >
                         <FiGithub />
                       </a>
-                      {/* Live demo link  */}
                       {repo.homepage && (
                         <a 
                           href={repo.homepage}
@@ -235,10 +204,9 @@ const Projects = () => {
             </motion.div>
           )}
           
-          {/* view all GitHub repos */}
           <motion.div className="github-repos__cta" variants={itemVariants}>
             <a 
-              href={`https://github.com/${Devni-Hewasundara}`}
+              href={`https://github.com/${githubUsername}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -249,7 +217,7 @@ const Projects = () => {
           </motion.div>
         </motion.section>
 
-        {/* last  section */}
+        {/* CTA Section */}
         <motion.section 
           className="projects__cta"
           initial="hidden"
@@ -270,5 +238,4 @@ const Projects = () => {
   );
 };
 
-
-export default Projects;//export component to use in another pages and components
+export default Projects;
