@@ -1,0 +1,297 @@
+
+@import '../../styles/variables'; //import shared variables
+
+@import '../../styles/mixins'; //import mixins
+
+// styles for main contact section
+.contact {
+  padding: $spacing-3xl 0; 
+
+  &__hero {
+    text-align: center; 
+      margin-bottom: $spacing-3xl; 
+
+    h1 {
+      @include heading-1; 
+      margin-bottom: $spacing-lg; 
+    }
+  }
+
+  &__subtitle {
+    @include body-text;
+     font-size: $font-size-lg; 
+    line-height: 1.7; 
+max-width: 600px; 
+    margin: 0 auto; 
+  }
+
+  &__content {
+    display: grid; 
+    gap: $spacing-3xl; 
+
+    @include large-desktop {
+      grid-template-columns: 1fr 1fr; 
+      align-items: start; 
+    }
+  }
+
+  &__form-section {
+    order: 2; // dispaly second in small screens
+
+    @include large-desktop {
+      order: 1; // display forst on desktop
+    }
+  }
+
+  &__info-section {
+    order: 1; // display first on small screens
+
+    @include large-desktop {
+      order: 2; // display second on desktops
+    }
+  }
+
+  &__form-container {
+    @include card; // Apply styles for cards
+
+    h2 {
+      @include heading-2; //apply styles for heading 2
+      margin-bottom: $spacing-xl; // Adds space below
+      text-align: center; // align text center
+    }
+  }
+
+  &__info {
+    @include card; // Apply styles to cards 
+
+    h2 {
+      @include heading-2; // styles for headings
+       margin-bottom: $spacing-lg; // Add space
+    }
+
+    > p {
+      @include body-text; // Add body text
+      line-height: 1.7; // to improve readability
+      margin-bottom: $spacing-2xl; // add space after the paragraph
+    }
+
+    h3 {
+      @include heading-3; // styles for sub-headings
+      margin-bottom: $spacing-md; // Add space
+    }
+  }
+
+  &__submit-btn {
+    width: 100%; // button with full width
+    justify-content: center; // center the text
+    padding: $spacing-md; // padding in the button
+    font-size: $font-size-lg; // for large texts
+    gap: $spacing-sm; // gap between icons and texts
+  }
+}
+
+// Styles for forms
+.contact__form {
+  .form-row {
+    display: grid; //display in grids
+    gap: $spacing-lg; // space between two inputs
+
+    @include desktop {
+      grid-template-columns: 1fr 1fr; // two inputs side by side in desktop scrrens
+    }
+  }
+
+  .form-group {
+    margin-bottom: $spacing-lg; // space between fields
+
+    label {
+      display: block; // label for each list
+      margin-bottom: $spacing-sm; // add spcae below the label
+      font-weight: $font-weight-medium; // for medium fonts
+      color: var(--text-color); // theme text colour
+    }
+
+    input,
+    textarea {
+      width: 100%; // Full width input
+      padding: $spacing-md; // Inner padding
+      border: 2px solid var(--border-color); // Border color
+      border-radius: $border-radius-md; // Rounded corners
+      background: var(--bg-color); // Background color
+      color: var(--text-color); // Text color
+      font-family: inherit; // Inherit font from parent
+      transition: all $transition-fast; // Smooth animation on focus
+      resize: vertical; // Allow resizing textarea vertically
+
+      &:focus {
+        outline: none; // Remove default outline
+        border-color: $primary-color; // Highlight border
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.1); // Glow effect
+      }
+
+      &::placeholder {
+        color: var(--text-color); // Placeholder text color
+        opacity: 0.6; // Make it lighter
+      }
+    }
+
+    textarea {
+      min-height: 120px; // Minimum height for textarea
+    }
+  }
+}
+
+// Form submission status messages
+.form-status {
+  margin-top: $spacing-lg; // Space above message
+  padding: $spacing-md; // Padding inside box
+  border-radius: $border-radius-md; // Rounded corners
+  text-align: center; // Center text
+  font-weight: $font-weight-medium; // Medium font weight
+
+  &.success {
+    background: rgba(#10b981, 0.1); // backgound colour
+    color: #10b981; // text colour
+    border: 1px solid rgba(#10b981, 0.2); // border colour
+  }
+
+  &.error {
+    background: rgba(#ef4444, 0.1); // backgound colour
+    color: #ef4444; // text clour
+    border: 1px solid rgba(#ef4444, 0.2); // border colour
+  }
+}
+
+// styles for contact information
+.contact__info-list {
+  margin-bottom: $spacing-2xl; // add spcae below list
+}
+
+.contact__info-item {
+  display: flex; // layuot flexbox
+  align-items: flex-start; // align items from tpo
+  gap: $spacing-lg; // add space between text and icon
+  margin-bottom: $spacing-xl; // add spcae between items
+
+  &:last-child {
+    margin-bottom: 0; // remove margins in last item
+  }
+}
+
+.contact__info-icon {
+  @include flex-center;
+  width: 50px; // size of the icon
+  height: 50px;
+  background: linear-gradient(135deg, $primary-color, $secondary-color); 
+  color: white; 
+  border-radius: $border-radius-full; 
+  font-size: $font-size-lg;
+  flex-shrink: 0; 
+}
+
+.contact__info-content {
+  h3 {
+    margin-bottom: $spacing-xs; // add small gap between
+    color: var(--text-color); // add text clour 
+    font-size: $font-size-lg; // add bigger heading
+  }
+
+  a {
+    color: $primary-color; // colours for links
+    text-decoration: none; // remove underlines
+    transition: color $transition-fast; // add an hover
+
+    &:hover {
+      color: $secondary-color; // chagne colour on hover
+      text-decoration: underline; // add an underline
+    }
+  }
+
+  span {
+    color: var(--text-color); // regular text
+  }
+}
+
+// styles for social media links
+.contact__social {
+  text-align: center; // align center the text
+
+  h3 {
+    margin-bottom: $spacing-lg; // add spcae below the heading
+  }
+}
+
+.contact__social-links {
+  display: flex; // links display in a row
+  justify-content: center; // horizontally center
+  gap: $spacing-lg; // add space between icons
+}
+
+.contact__social-link {
+  @include flex-center; // align center to the icon
+  width: 50px; 
+  height: 50px;
+  border-radius: $border-radius-full; 
+  background: var(--card-bg); // background colour
+  color: var(--text-color); // icon colour
+  border: 2px solid var(--border-color); // border colour
+  font-size: $font-size-lg; // icon size
+  transition: all $transition-normal; // smooth animations
+
+  &:hover {
+    background: var(--social-color, $primary-color); 
+    color: white; 
+    border-color: var(--social-color, $primary-color); 
+    transform: translateY(-3px); 
+    box-shadow: $shadow-md; 
+  }
+}
+
+// for responsive design (mobile adjustments)
+
+@include mobile {
+  .contact {
+    padding: $spacing-2xl 0; // reduce size of padding 
+
+    &__hero {
+      margin-bottom: $spacing-2xl; // reduce margin in mobile devices
+    }
+
+    &__content {
+      gap: $spacing-2xl; // smaller gap
+    }
+
+    &__form-container,
+    &__info {
+      padding: $spacing-lg; // reduce padding inside cards in mobile devices
+    }
+  }
+
+  .contact__form {
+    .form-row {
+      grid-template-columns: 1fr; // display vertically 
+      gap: 0; // remove gap
+    }
+  }
+
+  .contact__info-item {
+    gap: $spacing-md; // reduce space between text and icons
+    margin-bottom: $spacing-lg; // reduce bottom margin
+  }
+
+  .contact__info-icon {
+    width: 40px; 
+    height: 40px;
+    font-size: $font-size-base; 
+  }
+
+  .contact__social-links {
+    gap: $spacing-md; // reduce space between social media links
+  }
+
+  .contact__social-link {
+    width: 45px; 
+    height: 45px;
+    font-size: $font-size-base; // reduce icon size
+  }
+}

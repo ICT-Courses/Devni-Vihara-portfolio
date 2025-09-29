@@ -1,0 +1,79 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.footer {
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  padding: $spacing-xl 0;
+  margin-top: auto;
+
+  &__content {
+    @include flex-between;
+    flex-direction: column;
+    gap: $spacing-lg;
+
+    @include desktop {
+      flex-direction: row;
+      gap: 0;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: $spacing-md;
+    align-items: center;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius-full;
+    background: transparent;
+    color: var(--text-color);
+    font-size: $font-size-lg;
+    transition: all $transition-fast;
+    border: 2px solid var(--border-color);
+
+    &:hover {
+      background: linear-gradient(135deg, $primary-color, $secondary-color);
+      color: white;
+      border-color: transparent;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    color: var(--text-color);
+    font-size: $font-size-sm;
+    
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: $spacing-xs;
+      margin: 0;
+    }
+
+    @include desktop {
+      text-align: right;
+    }
+  }
+
+  &__heart {
+    color: #e74c3c;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}

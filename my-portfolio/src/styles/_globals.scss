@@ -1,0 +1,189 @@
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+// CSS Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// CSS Variables for theme switching
+:root {
+  --bg-color: #{$bg-color};
+  --text-color: #{$text-primary};
+  --card-bg: #{$card-bg};
+  --border-color: #{$border-color};
+}
+
+// Base styles
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-normal;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: all $transition-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-semibold;
+  line-height: 1.2;
+  margin-bottom: $spacing-md;
+  color: var(--text-color);
+}
+
+h1 {
+  @include heading-1;
+}
+
+h2 {
+  @include heading-2;
+}
+
+h3 {
+  @include heading-3;
+}
+
+p {
+  @include body-text;
+  margin-bottom: $spacing-md;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+// Lists
+ul, ol {
+  padding-left: $spacing-lg;
+  margin-bottom: $spacing-md;
+}
+
+li {
+  margin-bottom: $spacing-xs;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Form elements
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: $font-size-base;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid var(--border-color);
+  border-radius: $border-radius-md;
+  background: var(--card-bg);
+  color: var(--text-color);
+  transition: all $transition-fast;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+  }
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+// Utility classes
+.container {
+  @include container;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, $primary-color, $secondary-color, $accent-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.btn-primary {
+  @include button-primary;
+}
+
+.btn-secondary {
+  @include button-secondary;
+}
+
+// Loading animation
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  border-top: 2px solid $primary-color;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  border-radius: $border-radius-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, $secondary-color, $primary-color);
+}
+
+// Selection
+::selection {
+  background: rgba($primary-color, 0.2);
+  color: var(--text-color);
+}

@@ -1,0 +1,20 @@
+@import './styles/variables';
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+
+  &.dark-mode {
+    --bg-color: #{$dark-bg};
+    --text-color: #{$dark-text};
+    --card-bg: #{$dark-card-bg};
+    --border-color: #{$dark-border};
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding-top: $header-height;
+}
